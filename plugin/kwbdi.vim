@@ -10,10 +10,6 @@ if exists('loaded_kwbd')
 endif
 let loaded_kwbd = 1
 
-if !hasmapto('<Plug>Kwbd')
-  map <unique> <Leader>bd <Plug>Kwbd
-endif
-
 noremap <unique> <script> <Plug>Kwbd  :call <SID>Kwbd(1)<CR>:<BS>
 
 "delete the buffer; keep windows
@@ -35,7 +31,7 @@ function <SID>Kwbd(kwbdStage)
     windo call <SID>Kwbd(2)
 
     if (getbufvar(g:kwbdBufNum, '&buflisted') == 1)
-      execute "bd! " . g:kwbdBufNum . ""
+      execute "bd " . g:kwbdBufNum . ""
     endif
 
     " go back to the original window
